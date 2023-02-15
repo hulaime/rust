@@ -1,5 +1,5 @@
 [package]
-name = "s2_guessing_game"
+name = "ch02-guessing-game"
 version = "0.1.0"
 edition = "2021"
 
