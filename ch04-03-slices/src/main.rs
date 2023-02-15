@@ -14,7 +14,7 @@ fn main() {
     // 这等同于 `String` 的全部切片
     
 
-    let my_string_literal = "hello world";
+    let my_string_literal = "\ta\tbhello world";
 
     // `first_word` 接受字符串字面量的切片，无论是部分还是全部
     // let word = first_word_1(&my_string_literal[0..6]); // expected struct `String`, found `str`
@@ -29,6 +29,8 @@ fn main() {
 
     // 总结
     // &String 允许 &String，&str 允许 &String和&str
+    let word = first_word_3(my_string_literal);
+    println!("{}", word);
 }
 
 
@@ -49,11 +51,26 @@ fn first_word_2(s: &str) -> &str {
     let bytes = s.as_bytes();
 
     for (i, &item) in bytes.iter().enumerate() {
+        // println!("{}", item);
         if item == b' ' {
             return &s[0..i];
         }
     }
 
     &s[..]
+}
+
+fn first_word_3(s: &str) -> &str {
+    // let bytes = s.as_bytes();
+
+    // for item in s.split_whitespace() {
+    //     println!("{}", item);
+    //     if item == ' ' {
+    //         return &s[0..8];
+    //     }
+    // }
+
+    // &s[..]
+    s.split_whitespace().next().unwrap_or(&s[..])
 }
 
